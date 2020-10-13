@@ -1,0 +1,70 @@
+//create symbolic link from file to directory and check
+
+ln -s /home/student/myfile mysymlink
+student@student-Virtual-Machine:~$ ls
+contactsfile  dir2  Documents  myfile                 Pictures   Videos
+Desktop       dir3  Downloads  mysymlink              Public
+dir1          dir5  Music      NASA_access_log_Aug95  Templates
+
+//create symbolic link to an existing file
+
+ln -s /home/student/myfile mysymlink
+ln: failed to create symbolic link 'mysymlink': File exists
+
+//create a symbolic link with same name as original file, same link name, and printing result
+
+ln -s /home/student/myfile mysymlink1
+student@student-Virtual-Machine:~$ ls
+contactsfile  dir2  Documents  myfile      NASA_access_log_Aug95  Templates
+Desktop       dir3  Downloads  mysymlink   Pictures               Videos
+dir1          dir5  Music      mysymlink1  Public
+
+//create a symbolic link with different file name, and existing symbolic link name
+
+ln -s /home/student/contactsfile mysymlink
+ln: failed to create symbolic link 'mysymlink': File exists
+
+//do ls -l on target directory and locate link
+
+ls -l
+total 163940
+-rw-rw-r-- 1 student student       281 Oct  5 15:28 contactsfile
+drwxr-xr-x 2 student student      4096 Oct 11 16:06 Desktop
+drwxrwxr-x 2 student student      4096 Sep 15 14:37 dir1
+drwxrwxr-x 2 student student      4096 Sep 15 14:37 dir2
+drwxrwxr-x 2 student student      4096 Oct  5 16:43 dir3
+drwxrwxr-x 2 student student      4096 Oct 11 16:20 dir5
+drwxr-xr-x 2 student student      4096 Aug 27 09:29 Documents
+drwxr-xr-x 2 student student      4096 Aug 27 09:29 Downloads
+drwxr-xr-x 2 student student      4096 Aug 27 09:29 Music
+-rw-rw-r-- 1 student student         0 Oct  5 16:42 myfile
+lrwxrwxrwx 1 student student        20 Oct 11 16:27 mysymlink -> /home/student/myfile
+lrwxrwxrwx 1 student student        20 Oct 11 16:32 mysymlink1 -> /home/student/myfile
+-rw-rw-r-- 1 student student 167813770 Sep 27 10:06 NASA_access_log_Aug95
+drwxr-xr-x 2 student student      4096 Aug 27 09:29 Pictures
+drwxr-xr-x 2 student student      4096 Aug 27 09:29 Public
+drwxr-xr-x 2 student student      4096 Aug 27 09:29 Templates
+drwxr-xr-x 2 student student      4096 Aug 27 09:29 Videos
+
+//I recognize this as a link because it has "l" before permissions and they're a different color
+
+...
+
+//try change original file, save and close it (added last line)
+
+nano contactsfile
+student@student-Virtual-Machine:~$ cat contactsfile
+(760)555-1000 me@gmail.com
+(209)627-5977 hannah@gmail.com
+(209)627-6477 dad@gmail.com
+(509)209-9999 oops
+()000-0000 here@gmail.com
+(555)500-8767 name@gmail.com
+(670)-9000 something@gmail.com
+(415)647- email@aol.com
+(559)670-1202 someone@hotmail.com
+(650)111-7000 fbiinfo@gmail.com
+
+new information heeeeere!
+
+//upon reopening contactsfile, my changes to the last line were saved!

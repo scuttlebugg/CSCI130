@@ -1,0 +1,82 @@
+//extracting IP addresses from NASA file and displaying the first 20 entries
+
+cat NASA_access_log_Aug95 | egrep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'  | awk '{print $1}' | sort -u | uniq | head -20
+01.130.237.199
+03.190.160.205
+10.93.233.199
+111.60.94.199
+128.100.125.62
+128.100.160.162
+128.100.178.11
+128.100.180.37
+128.100.183.252
+128.100.183.253
+128.100.191.43
+128.100.197.90
+128.100.65.4
+128.100.80.97
+128.100.8.177
+128.100.83.132
+128.100.87.74
+128.100.88.42
+128.100.88.49
+128.100.95.2
+
+//extracting IP's that are unique
+
+cat NASA_access_log_Aug95 | egrep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'  | awk '{print $1}' | sort -u | wc -l
+23261
+
+//showing non-unique visitors; we have lots of repeat visitors!
+
+ cat NASA_access_log_Aug95 | egrep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'  | awk '{print $1}' | wc -l
+447323
+
+//unique visitors 10am-12pm; fewer unique visitors
+
+cat NASA_access_log_Aug95 | awk '$1 ~/^[0-9][0-9]?[0-9]?./ && $4 ~/1995:1[0-1]:/' | sort -u | wc -l
+61046
+
+//unique visitors 3pm-5pm; more unique visitors
+
+cat NASA_access_log_Aug95 | awk '$1 ~/^[0-9][0-9]?[0-9]?./ && $4 ~/1995:1[5-6]:/' | sort -u  | wc -l
+68108
+
+//create phone and email file
+
+student@student-Virtual-Machine:~$ touch contactsfile
+student@student-Virtual-Machine:~$ nano contactsfile
+student@student-Virtual-Machine:~$ cat contactsfile
+(760)555-1000 me@gmail.com
+(209)627-5977 hannah@gmail.com
+(209)627-6477 dad@gmail.com
+(509)209-9999 oops
+()000-0000 here@gmail.com
+(555)500-8767 name@gmail.com
+(670)-9000 something@gmail.com
+(415)647- email@aol.com
+(559)670-1202 someone@hotmail.com
+(650)111-7000 fbiinfo@gmail.com
+
+//extract email entries with valid format; there are 9
+
+cat contactsfile | egrep -Eo "\b[a-zA-Z0-9.-]+@[a-zA-Z0-9]+.[a-zA-Z.-]+\b"
+me@gmail.com
+hannah@gmail.com
+dad@gmail.com
+here@gmail.com
+name@gmail.com
+something@gmail.com
+email@aol.com
+someone@hotmail.com
+fbiinfo@gmail.com
+
+//extract entries with valid phone number format; there are 7
+cat contactsfile | cut -d " " -f1 | egrep '^\([0-9]{3}\)[0-9]{3}\-[0-9]{4}$'
+(760)555-1000
+(209)627-5977
+(209)627-6477
+(509)209-9999
+(555)500-8767
+(559)670-1202
+(650)111-7000

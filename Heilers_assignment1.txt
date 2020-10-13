@@ -1,0 +1,187 @@
+** I used make dir to create dir1, dir2, dir3. I deleted dir3 and created files using the touch command and moved myfile1* to home.**
+
+student@student-Virtual-Machine:~/dir2$ cd $HOME
+student@student-Virtual-Machine:~$ ls
+Desktop  Documents  myfile1    myfile11  myfile14  myfile17  Pictures   Videos
+dir1     Downloads  myfile10   myfile12  myfile15  myfile18  Public
+dir2     Music      myfile100  myfile13  myfile16  myfile19  Templates
+student@student-Virtual-Machine:~$ cd dir2/
+
+**creating a new file**
+
+student@student-Virtual-Machine:~/dir2$ touch myfile0
+student@student-Virtual-Machine:~/dir2$ ls
+myfile0
+
+**moving and renaming a file**
+
+student@student-Virtual-Machine:~/dir2$ mv ~/myfile1 ./myfile001
+student@student-Virtual-Machine:~/dir2$ ls
+myfile0  myfile001
+student@student-Virtual-Machine:~/dir2$ cd $HOME
+student@student-Virtual-Machine:~$ ls
+Desktop  Documents  myfile10   myfile12  myfile15  myfile18  Public
+dir1     Downloads  myfile100  myfile13  myfile16  myfile19  Templates
+dir2     Music      myfile11   myfile14  myfile17  Pictures  Videos
+student@student-Virtual-Machine:~$ cd dir1/
+
+**created dir1.a, dir1.b, dir1.c inside of dir1**
+
+student@student-Virtual-Machine:~/dir1$ ls
+dir1.a    myfile28  myfile39  myfile5   myfile60  myfile71  myfile82  myfile93
+dir1.b    myfile29  myfile4   myfile50  myfile61  myfile72  myfile83  myfile94
+dir1.c    myfile3   myfile40  myfile51  myfile62  myfile73  myfile84  myfile95
+myfile2   myfile30  myfile41  myfile52  myfile63  myfile74  myfile85  myfile96
+myfile20  myfile31  myfile42  myfile53  myfile64  myfile75  myfile86  myfile97
+myfile21  myfile32  myfile43  myfile54  myfile65  myfile76  myfile87  myfile98
+myfile22  myfile33  myfile44  myfile55  myfile66  myfile77  myfile88  myfile99
+myfile23  myfile34  myfile45  myfile56  myfile67  myfile78  myfile89
+myfile24  myfile35  myfile46  myfile57  myfile68  myfile79  myfile9
+myfile25  myfile36  myfile47  myfile58  myfile69  myfile8   myfile90
+myfile26  myfile37  myfile48  myfile59  myfile7   myfile80  myfile91
+myfile27  myfile38  myfile49  myfile6   myfile70  myfile81  myfile92
+
+**moving files around**
+
+student@student-Virtual-Machine:~/dir1$ mv ./myfile6* ./dir1.c
+student@student-Virtual-Machine:~/dir1$ ls
+dir1.a    myfile26  myfile35  myfile44  myfile53  myfile72  myfile81  myfile90
+dir1.b    myfile27  myfile36  myfile45  myfile54  myfile73  myfile82  myfile91
+dir1.c    myfile28  myfile37  myfile46  myfile55  myfile74  myfile83  myfile92
+myfile2   myfile29  myfile38  myfile47  myfile56  myfile75  myfile84  myfile93
+myfile20  myfile3   myfile39  myfile48  myfile57  myfile76  myfile85  myfile94
+myfile21  myfile30  myfile4   myfile49  myfile58  myfile77  myfile86  myfile95
+myfile22  myfile31  myfile40  myfile5   myfile59  myfile78  myfile87  myfile96
+myfile23  myfile32  myfile41  myfile50  myfile7   myfile79  myfile88  myfile97
+myfile24  myfile33  myfile42  myfile51  myfile70  myfile8   myfile89  myfile98
+myfile25  myfile34  myfile43  myfile52  myfile71  myfile80  myfile9   myfile99
+student@student-Virtual-Machine:~/dir1$ cd dir1.c/
+student@student-Virtual-Machine:~/dir1/dir1.c$ ls
+myfile6   myfile61  myfile63  myfile65  myfile67  myfile69
+myfile60  myfile62  myfile64  myfile66  myfile68
+
+**playing around with commands**
+
+student@student-Virtual-Machine:~/dir1/dir1.c$ cd ../
+student@student-Virtual-Machine:~/dir1$ cd ../
+student@student-Virtual-Machine:~$ pwd
+/home/student
+student@student-Virtual-Machine:~$ ls
+Desktop  Documents  myfile10   myfile12  myfile15  myfile18  Public
+dir1     Downloads  myfile100  myfile13  myfile16  myfile19  Templates
+dir2     Music      myfile11   myfile14  myfile17  Pictures  Videos
+student@student-Virtual-Machine:~$ cd dir1/
+student@student-Virtual-Machine:~/dir1$ ls
+dir1.a    myfile26  myfile35  myfile44  myfile53  myfile72  myfile81  myfile90
+dir1.b    myfile27  myfile36  myfile45  myfile54  myfile73  myfile82  myfile91
+dir1.c    myfile28  myfile37  myfile46  myfile55  myfile74  myfile83  myfile92
+myfile2   myfile29  myfile38  myfile47  myfile56  myfile75  myfile84  myfile93
+myfile20  myfile3   myfile39  myfile48  myfile57  myfile76  myfile85  myfile94
+myfile21  myfile30  myfile4   myfile49  myfile58  myfile77  myfile86  myfile95
+myfile22  myfile31  myfile40  myfile5   myfile59  myfile78  myfile87  myfile96
+myfile23  myfile32  myfile41  myfile50  myfile7   myfile79  myfile88  myfile97
+myfile24  myfile33  myfile42  myfile51  myfile70  myfile8   myfile89  myfile98
+myfile25  myfile34  myfile43  myfile52  myfile71  myfile80  myfile9   myfile99
+student@student-Virtual-Machine:~/dir1$ mv ./myfile5* ./dir1.b
+student@student-Virtual-Machine:~/dir1$ ls
+dir1.a    myfile25  myfile33  myfile41  myfile7   myfile78  myfile86  myfile94
+dir1.b    myfile26  myfile34  myfile42  myfile70  myfile79  myfile87  myfile95
+dir1.c    myfile27  myfile35  myfile43  myfile71  myfile8   myfile88  myfile96
+myfile2   myfile28  myfile36  myfile44  myfile72  myfile80  myfile89  myfile97
+myfile20  myfile29  myfile37  myfile45  myfile73  myfile81  myfile9   myfile98
+myfile21  myfile3   myfile38  myfile46  myfile74  myfile82  myfile90  myfile99
+myfile22  myfile30  myfile39  myfile47  myfile75  myfile83  myfile91
+myfile23  myfile31  myfile4   myfile48  myfile76  myfile84  myfile92
+myfile24  myfile32  myfile40  myfile49  myfile77  myfile85  myfile93
+student@student-Virtual-Machine:~/dir1$ mv ./myfile8* ./dir1.b
+
+**moving files around**
+
+student@student-Virtual-Machine:~/dir1$ ls
+dir1.a    myfile24  myfile31  myfile39  myfile46  myfile73  myfile90  myfile98
+dir1.b    myfile25  myfile32  myfile4   myfile47  myfile74  myfile91  myfile99
+dir1.c    myfile26  myfile33  myfile40  myfile48  myfile75  myfile92
+myfile2   myfile27  myfile34  myfile41  myfile49  myfile76  myfile93
+myfile20  myfile28  myfile35  myfile42  myfile7   myfile77  myfile94
+myfile21  myfile29  myfile36  myfile43  myfile70  myfile78  myfile95
+myfile22  myfile3   myfile37  myfile44  myfile71  myfile79  myfile96
+myfile23  myfile30  myfile38  myfile45  myfile72  myfile9   myfile97
+student@student-Virtual-Machine:~/dir1$ cd dir1.a/
+student@student-Virtual-Machine:~/dir1/dir1.a$ ls
+student@student-Virtual-Machine:~/dir1/dir1.a$ ../
+bash: ../: Is a directory
+student@student-Virtual-Machine:~/dir1/dir1.a$ cd../
+bash: cd../: No such file or directory
+student@student-Virtual-Machine:~/dir1/dir1.a$ cd ../
+student@student-Virtual-Machine:~/dir1$ cp myfiles9* ./dir1.a
+cp: cannot stat 'myfiles9*': No such file or directory
+student@student-Virtual-Machine:~/dir1$ pwd
+/home/student/dir1
+student@student-Virtual-Machine:~/dir1$ ls
+dir1.a    myfile24  myfile31  myfile39  myfile46  myfile73  myfile90  myfile98
+dir1.b    myfile25  myfile32  myfile4   myfile47  myfile74  myfile91  myfile99
+dir1.c    myfile26  myfile33  myfile40  myfile48  myfile75  myfile92
+myfile2   myfile27  myfile34  myfile41  myfile49  myfile76  myfile93
+myfile20  myfile28  myfile35  myfile42  myfile7   myfile77  myfile94
+myfile21  myfile29  myfile36  myfile43  myfile70  myfile78  myfile95
+myfile22  myfile3   myfile37  myfile44  myfile71  myfile79  myfile96
+myfile23  myfile30  myfile38  myfile45  myfile72  myfile9   myfile97
+student@student-Virtual-Machine:~/dir1$ cp myfile9* ./dir1.a
+student@student-Virtual-Machine:~/dir1$ ls
+dir1.a    myfile24  myfile31  myfile39  myfile46  myfile73  myfile90  myfile98
+dir1.b    myfile25  myfile32  myfile4   myfile47  myfile74  myfile91  myfile99
+dir1.c    myfile26  myfile33  myfile40  myfile48  myfile75  myfile92
+myfile2   myfile27  myfile34  myfile41  myfile49  myfile76  myfile93
+myfile20  myfile28  myfile35  myfile42  myfile7   myfile77  myfile94
+myfile21  myfile29  myfile36  myfile43  myfile70  myfile78  myfile95
+myfile22  myfile3   myfile37  myfile44  myfile71  myfile79  myfile96
+myfile23  myfile30  myfile38  myfile45  myfile72  myfile9   myfile97
+student@student-Virtual-Machine:~/dir1$ cd dir1.a/
+student@student-Virtual-Machine:~/dir1/dir1.a$ ls
+myfile9   myfile91  myfile93  myfile95  myfile97  myfile99
+myfile90  myfile92  myfile94  myfile96  myfile98
+student@student-Virtual-Machine:~/dir1/dir1.a$ cd $HOME
+student@student-Virtual-Machine:~$ ls
+Desktop  Documents  myfile10   myfile12  myfile15  myfile18  Public
+dir1     Downloads  myfile100  myfile13  myfile16  myfile19  Templates
+dir2     Music      myfile11   myfile14  myfile17  Pictures  Videos
+student@student-Virtual-Machine:~$ mkdir dir3
+student@student-Virtual-Machine:~$ mv ./dir3 ./dir3.0
+student@student-Virtual-Machine:~$ ls
+Desktop  dir3.0     Music      myfile11  myfile14  myfile17  Pictures   Videos
+dir1     Documents  myfile10   myfile12  myfile15  myfile18  Public
+dir2     Downloads  myfile100  myfile13  myfile16  myfile19  Templates
+
+**trying to copy a file to /tmp, permission denied :( **
+
+student@student-Virtual-Machine:~$ cp myfile100 ../tmp
+cp: cannot create regular file '../tmp': Permission denied
+
+**trying to remove a dir that is not empty, I need to delete its contents first with rm -rf**
+
+student@student-Virtual-Machine:~$ rmdir dir2/
+rmdir: failed to remove 'dir2/': Directory not empty
+
+**cleaning out directories**
+
+student@student-Virtual-Machine:~$ rm dir2/*
+student@student-Virtual-Machine:~$ rm -rf dir1/*
+student@student-Virtual-Machine:~$ ls
+Desktop  dir3.0     Music      myfile11  myfile14  myfile17  Pictures   Videos
+dir1     Documents  myfile10   myfile12  myfile15  myfile18  Public
+dir2     Downloads  myfile100  myfile13  myfile16  myfile19  Templates
+
+**removing directories**
+
+student@student-Virtual-Machine:~$ rmdir dir1/
+student@student-Virtual-Machine:~$ rmdir dir2/
+student@student-Virtual-Machine:~$ rmdir dir3.0/
+student@student-Virtual-Machine:~$ ls
+Desktop    Music      myfile11  myfile14  myfile17  Pictures   Videos
+Documents  myfile10   myfile12  myfile15  myfile18  Public
+Downloads  myfile100  myfile13  myfile16  myfile19  Templates
+
+
+
+
+

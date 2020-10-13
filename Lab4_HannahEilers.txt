@@ -1,0 +1,84 @@
+//downloading and decompressing NASA file
+
+wget ftp://ita.ee.lbl.gov/traces/NASA_access_log_Aug95.gz
+gunzip -d NASA_access_log_Aug95.gz
+
+//display first 20 entries sorted by file name
+
+student@student-Virtual-Machine:~$ cat NASA_access_log_Aug95 | awk '{print $1}'  | head -20
+in24.inetnebr.com
+uplherc.upl.com
+uplherc.upl.com
+uplherc.upl.com
+uplherc.upl.com
+ix-esc-ca2-07.ix.netcom.com
+uplherc.upl.com
+slppp6.intermind.net
+piweba4y.prodigy.com
+slppp6.intermind.net
+slppp6.intermind.net
+ix-esc-ca2-07.ix.netcom.com
+slppp6.intermind.net
+uplherc.upl.com
+133.43.96.45
+kgtyk4.kj.yamagata-u.ac.jp
+kgtyk4.kj.yamagata-u.ac.jp
+d0ucr6.fnal.gov
+ix-esc-ca2-07.ix.netcom.com
+d0ucr6.fnal.gov
+
+
+//search and display 20 entries from log not with 200 status code, sorted by file name
+
+student@student-Virtual-Machine:~$ grep -v '200' NASA_access_log_Aug95 | sort -k1 | head -20
+01-dynamic-c.wokingham.luna.net - - [27/Aug/1995:20:37:09 -0400] "GET /shuttle/countdown/images/countclock.gif HTTP/1.0" 304 0
+01-dynamic-c.wokingham.luna.net - - [27/Aug/1995:20:37:10 -0400] "GET /images/NASA-logosmall.gif HTTP/1.0" 304 0
+01-dynamic-c.wokingham.luna.net - - [27/Aug/1995:20:37:44 -0400] "GET /images/KSC-logosmall.gif HTTP/1.0" 304 0
+03-dynamic-c.wokingham.luna.net - - [08/Aug/1995:19:35:45 -0400] "GET /shuttle/countdown/images/countclock.gif HTTP/1.0" 304 0
+03-dynamic-c.wokingham.luna.net - - [08/Aug/1995:19:35:47 -0400] "GET /images/NASA-logosmall.gif HTTP/1.0" 304 0
+03-dynamic-c.wokingham.luna.net - - [08/Aug/1995:19:39:02 -0400] "GET /shuttle/countdown/video/livevideo.jpeg HTTP/1.0" 304 0
+03-dynamic-c.wokingham.luna.net - - [08/Aug/1995:19:39:24 -0400] "GET /shuttle/countdown/video/livevideo.jpeg HTTP/1.0" 304 0
+03-dynamic-c.wokingham.luna.net - - [08/Aug/1995:19:39:27 -0400] "GET /shuttle/countdown/video/livevideo.jpeg HTTP/1.0" 304 0
+03-dynamic-c.wokingham.luna.net - - [08/Aug/1995:19:39:30 -0400] "GET /shuttle/countdown/video/livevideo.jpeg HTTP/1.0" 304 0
+03-dynamic-c.wokingham.luna.net - - [08/Aug/1995:19:39:33 -0400] "GET /shuttle/countdown/video/livevideo.jpeg HTTP/1.0" 304 0
+03-dynamic-c.wokingham.luna.net - - [08/Aug/1995:19:39:35 -0400] "GET /shuttle/countdown/video/livevideo.jpeg HTTP/1.0" 304 0
+101.irri.cgiar.org - - [22/Aug/1995:04:27:51 -0400] "GET /software/winvn HTTP/1.0" 302 -
+10forward.ppp.america.com - - [07/Aug/1995:20:22:50 -0400] "GET /images/ksclogo-medium.gif HTTP/1.0" 304 0
+10forward.ppp.america.com - - [07/Aug/1995:20:22:53 -0400] "GET /images/NASA-logosmall.gif HTTP/1.0" 304 0
+10forward.ppp.america.com - - [07/Aug/1995:20:22:54 -0400] "GET /images/MOSAIC-logosmall.gif HTTP/1.0" 304 0
+10forward.ppp.america.com - - [07/Aug/1995:20:22:54 -0400] "GET /images/USA-logosmall.gif HTTP/1.0" 304 0
+10forward.ppp.america.com - - [07/Aug/1995:20:22:54 -0400] "GET /images/WORLD-logosmall.gif HTTP/1.0" 304 0
+10forward.ppp.america.com - - [07/Aug/1995:20:23:23 -0400] "GET /images/whatsnew.gif HTTP/1.0" 304 0
+10forward.ppp.america.com - - [07/Aug/1995:20:23:41 -0400] "GET /images/KSC-logosmall.gif HTTP/1.0" 304 0
+10forward.ppp.america.com - - [07/Aug/1995:20:23:51 -0400] "GET /shuttle/countdown HTTP/1.0" 302 -
+
+//count number of lines with "apollo" request
+
+grep -c 'apollo' NASA_access_log_Aug95
+162706
+
+//for lines with apollo, and status !=200, print 20 lines of name and status code
+
+student@student-Virtual-Machine:~$ grep 'apollo' NASA_access_log_Aug95 | grep !='200' NASA_access_log_Aug95 | awk '{print $1 " " $5}' NASA_access_log_Aug95 | head -20
+in24.inetnebr.com -0400]
+uplherc.upl.com -0400]
+uplherc.upl.com -0400]
+uplherc.upl.com -0400]
+uplherc.upl.com -0400]
+ix-esc-ca2-07.ix.netcom.com -0400]
+uplherc.upl.com -0400]
+slppp6.intermind.net -0400]
+piweba4y.prodigy.com -0400]
+slppp6.intermind.net -0400]
+slppp6.intermind.net -0400]
+ix-esc-ca2-07.ix.netcom.com -0400]
+slppp6.intermind.net -0400]
+uplherc.upl.com -0400]
+133.43.96.45 -0400]
+kgtyk4.kj.yamagata-u.ac.jp -0400]
+kgtyk4.kj.yamagata-u.ac.jp -0400]
+d0ucr6.fnal.gov -0400]
+ix-esc-ca2-07.ix.netcom.com -0400]
+d0ucr6.fnal.gov -0400]
+
+

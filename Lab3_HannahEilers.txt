@@ -1,0 +1,38 @@
+//creating myfile1, adding content, and checking content
+
+student@student-Virtual-Machine:~$ cat > myfile1
+How cool! Here's the content for file 1!
+student@student-Virtual-Machine:~$ more myfile1
+How cool! Here's the content for file 1!
+
+//creating myfile2, adding content, and checking content
+
+student@student-Virtual-Machine:~$ cat > myfile 2
+cat: 2: No such file or directory
+student@student-Virtual-Machine:~$ cat > myfile2
+Here's some sweet content in file 2.                     
+student@student-Virtual-Machine:~$ more myfile2
+Here's some sweet content in file 2.
+
+//creating myfile3, adding content, and checking content
+
+student@student-Virtual-Machine:~$ cat > myfile3
+Last but not least, here's some words in file 3!
+student@student-Virtual-Machine:~$ more myfile3
+Last but not least, here's some words in file 3!
+
+//concatenating 3 files, storing in mybigfile1
+
+student@student-Virtual-Machine:~$ cat myfile1 myfile2 myfile3 > mybigfile1
+
+//checking location for mybigfile1
+
+student@student-Virtual-Machine:~$ find . -name 'mybigfile1'
+./mybigfile1
+
+//using cat to check content of mybigfile1
+
+student@student-Virtual-Machine:~$ cat ./mybigfile1
+How cool! Here's the content for file 1!
+Here's some sweet content in file 2.
+Last but not least, here's some words in file 3!

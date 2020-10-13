@@ -1,0 +1,88 @@
+//printing alias list
+
+student@student-Virtual-Machine:~$ alias
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+
+//removing aliases
+
+student@student-Virtual-Machine:~$ unalias -a
+
+//printing empty alias list
+
+student@student-Virtual-Machine:~$ alias
+
+//restoring default aliases with .bashrc
+
+student@student-Virtual-Machine:~$ source .bashrc
+bash: lesspipe: No such file or directory
+bash: dircolors: No such file or directory
+
+//printing restores alias list
+
+student@student-Virtual-Machine:~$ alias
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+
+//create files in dir1
+
+student@student-Virtual-Machine:~/dir1$ touch myfile{1..5}
+student@student-Virtual-Machine:~/dir1$ ls
+
+//list files in dir1
+
+myfile1  myfile2  myfile3  myfile4  myfile5
+
+//change permissions the Linux way
+
+student@student-Virtual-Machine:~/dir1$ chmod 777 myfile1
+student@student-Virtual-Machine:~/dir1$ chmod 755 myfile2
+student@student-Virtual-Machine:~/dir1$ chmod 644 myfile3
+student@student-Virtual-Machine:~/dir1$ chmod 600 myfile4
+student@student-Virtual-Machine:~/dir1$ chmod 000 myfile5
+
+//display changed permissions
+
+student@student-Virtual-Machine:~/dir1$ ls -l
+total 0
+-rwxrwxrwx 1 student student 0 Sep 15 14:21 myfile1
+-rwxr-xr-x 1 student student 0 Sep 15 14:21 myfile2
+-rw-r--r-- 1 student student 0 Sep 15 14:21 myfile3
+-rw------- 1 student student 0 Sep 15 14:21 myfile4
+---------- 1 student student 0 Sep 15 14:21 myfile5
+
+//create new dir & populate with files
+
+student@student-Virtual-Machine:~$ mkdir dir2
+student@student-Virtual-Machine:~$ cd dir2/
+student@student-Virtual-Machine:~/dir2$ touch myfile{6..9}
+student@student-Virtual-Machine:~/dir2$ ls
+myfile6  myfile7  myfile8  myfile9
+
+//recursively change dir permissions with one command
+
+student@student-Virtual-Machine:~/dir2$ chmod g=rx myfile*
+student@student-Virtual-Machine:~/dir2$ ls -l
+total 0
+-rw-r-xr-- 1 student student 0 Sep 15 14:37 myfile6
+-rw-r-xr-- 1 student student 0 Sep 15 14:37 myfile7
+-rw-r-xr-- 1 student student 0 Sep 15 14:37 myfile8
+-rw-r-xr-- 1 student student 0 Sep 15 14:37 myfile9
+student@student-Virtual-Machine:~/dir2$ chmod g=r myfile*
+student@student-Virtual-Machine:~/dir2$ ls -l
+total 0
+-rw-r--r-- 1 student student 0 Sep 15 14:37 myfile6
+-rw-r--r-- 1 student student 0 Sep 15 14:37 myfile7
+-rw-r--r-- 1 student student 0 Sep 15 14:37 myfile8
